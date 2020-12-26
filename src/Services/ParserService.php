@@ -2,6 +2,7 @@
 
 namespace fernandosa\Debugginator\Services;
 
+use Exception;
 use Illuminate\Support\Facades\Storage;
 use fernandosa\Debugginator\Helpers\FileManipulationHelper;
 
@@ -36,13 +37,16 @@ class ParserService
     }
 
     /**
-     * readLogFiles
+     * read log files
      *
+     * @param array $dateRange format: Y-m-d
      * @return void
      */
-    public function readLogFiles(): void
+    public function readLogFiles(array $dateRange = []): void
     {
-        $filesNames = $this->fileManipulationHelper->getFilesNames();
+        
+        $this->validateDateRange($dateRange);
+        $filesNames = $this->fileManipulationHelper->getFilesNames($dateRange);
         
         $logInfos = $this->fileManipulationHelper->parseText($filesNames);
         $this->indexedDirectories($logInfos);
@@ -101,5 +105,16 @@ class ParserService
                 }
             }
         }
+    }
+
+    public function validateDateRange(array $dateRange) : void
+    {
+        if($dateRange == []){
+            return;
+        }
+        if(count($dateRange) !== 2){
+            throw new Exception("Date range array must have 0 or 2 values");
+        }
+        return;
     }
 }

@@ -10,7 +10,7 @@ class DebuggerController
     public function index()
     {
         $debugger = new ParserService;
-        $debugger->readLogFiles();
+        $debugger->readLogFiles(['2020-11-01', '2020-12-31']);
 
     }
 }

@@ -58,7 +58,7 @@ class ErrorGenerator
      */
     private function replaceInternalFunction(int $stackLineNumber, string $fileName) : string
     {
-        return "#{$stackLineNumber} [internal function]: {$fileName}";
+        return "#{$stackLineNumber} [internal function]: {$fileName}->fooBar()";
     }    
 
 }
