@@ -7,10 +7,10 @@ ROADMAP:
     Get file errors count, relative path;
     Set date range
 0.2.0 
+    List/Navigate all files    
+0.3.0 
     Structure file path in levels
     % fileErrors/totalErrors
-0.3.0 
-    List/Navigate all files
 0.4.0 
     Color code files
 0.5.0 
